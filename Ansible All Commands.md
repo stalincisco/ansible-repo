@@ -35,7 +35,7 @@ To test ansible, first ensure that ssh is up and running.
      $ sudo systemctl status sshd
 
 
-## Step 3:  Modify hostname to controller, target1, target2
+## Step 5:  Modify hostname to controller, target1, target2
 
      $ sudo vi /etc/hostname  
 
