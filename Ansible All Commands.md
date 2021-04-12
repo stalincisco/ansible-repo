@@ -80,9 +80,11 @@ And remove # before host_key_checking = False
 
 
 
+  $ apm install linter-js-yaml
 
-
-###Install Visual Studio Code
+  $ ansible playbook playbook-pingtest.yaml -i inventory.txt
+  
+###Install Visual Studio Code or autom IDE
 
 **Switch to the root user.**
       
