@@ -87,13 +87,28 @@ And remove # before host_key_checking = False
 
  $ ansible -playbook playbook-pingtest.yaml -i inventory.txt
 
-## now install VScode IDE on your local machine and create inventory.txt and playbook-pingtest.yaml
-
-
 http://www.yamllint.com/
 
+## now install VScode IDE or Atom IDE on your local machine and create inventory.txt and playbook-pingtest.yaml
+
+**install linter-js-yaml**
+
+**install atom remote sunc**
 
 
+**create a file under tmp folder**
+
+  $cat > /tmp/test-file.txt
+  Hello! This is a sample contecnt in test file
+  ctl+c
+  $cat /tmp/test-file.txt
+  Hello! This is a sample contecnt in test file
+
+go to exercise-1-copy-file folder and execute
+
+make sure the test-file.txt dosent exist in target1 and 2 severs.
+
+  $ansible-playbook playbook-copyfile.yaml -i inventory.txt
 
 
 ## Appendix 
