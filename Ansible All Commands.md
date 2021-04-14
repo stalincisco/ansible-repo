@@ -87,6 +87,8 @@ And remove # before host_key_checking = False
 
  $ ansible -playbook playbook-pingtest.yaml -i inventory.txt
 
+## now install VScode IDE on your local machine and create inventory.txt and playbook-pingtest.yaml
+
 
 http://www.yamllint.com/
 
