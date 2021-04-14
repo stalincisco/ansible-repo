@@ -75,10 +75,26 @@ And remove # before host_key_checking = False
     
     $ vi playbook-pingtest.yaml
 
-  http://www.yamllint.com/
+-
+
+   name: Test Connectivity to the target servers
+   hosts: all
+   taskts:
+     - name: ping test 
+       ping:
+      
+   **save the file**
+
+ $ ansible -playbook playbook-pingtest.yaml -i inventory.txt
+
+
+http://www.yamllint.com/
 
 
 
+
+
+## Appendix 
 
   $ apm install linter-js-yaml
 
