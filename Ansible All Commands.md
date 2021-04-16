@@ -85,7 +85,7 @@ And remove # before host_key_checking = False
       
    **save the file**
 
- $ ansible -playbook playbook-pingtest.yaml -i inventory.txt
+    $ ansible -playbook playbook-pingtest.yaml -i inventory.txt
 
 http://www.yamllint.com/
 
@@ -98,54 +98,79 @@ http://www.yamllint.com/
 
 **create a file under tmp folder**
 
-  $cat > /tmp/test-file.txt
+    $ cat > /tmp/test-file.txt
   Hello! This is a sample contecnt in test file
   ctl+c
-  $cat /tmp/test-file.txt
+   
+    $ cat /tmp/test-file.txt
   Hello! This is a sample contecnt in test file
 
 go to exercise-1-copy-file folder and execute
 
 make sure the test-file.txt dosent exist in target1 and 2 severs.
 
-  $ ansible-playbook playbook-copyfile.yaml -i inventory.txt
-  $ ansible playbook playbook-pingtest.yaml -i inventory.txt
+    $ ansible-playbook playbook-copyfile.yaml -i inventory.txt
+    $ ansible playbook playbook-pingtest.yaml -i inventory.txt
 
 
 ## Module Coding Exercise
 
-  Ansible Modules
+## Ansible Modules
 
-1) Update the playbook with a play to Execute a script on all web server nodes. The script is located at /tmp/install_script.sh
+    1) Update the playbook with a play to Execute a script on all web server nodes. The script is located at /tmp/install_script.sh
 
-Use the Script module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html
+    Use the Script module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html
 
-2) Update the playbook to add a new task to start httpd services on all web nodes
+    2) Update the playbook to add a new task to start httpd services on all web nodes
 
-Use the Service module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html
+    Use the Service module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html
 
 
-3) Update the playbook to add a new task in the beginning to add an entry into /etc/resolv.conf file for hosts. The line to be added    is nameserver 10.1.250.10
+    3) Update the playbook to add a new task in the beginning to add an entry into /etc/resolv.conf file for hosts. The line to be   
+       added is nameserver 10.1.250.10
 
     **Note:** The new task must be executed first, so place it accordingly.
 
-Use the Lineinfile module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/lineinfile_module.html
+    Use the Lineinfile module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/lineinfile_module.html
 
-4) Update the playbook to add a new task at second position (right after adding entry to resolv.conf) to create a new web user.
+    4) Update the playbook to add a new task at second position (right after adding entry to resolv.conf) to create a new web user.
 
-Use the user module for this. User details to be used are given below:
-Username: web_user
-uid: 1040
-group: developers
+    Use the user module for this. User details to be used are given below:
+    Username: web_user
+    uid: 1040
+    group: developers
 
-user Module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html
+    user Module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html
 
+------------------------------------------------------------------------------------------------------------------------
+## Sample Inventory File
 
+## Web Servers
+    sql_db1 ansible_host=sql01.xyz.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Lin$Pass
+    sql_db2 ansible_host=sql02.xyz.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Lin$Pass
+    web_node1 ansible_host=web01.xyz.com ansible_connection=ssh ansible_user=administrator ansible_ssh_pass=Win$Pass
+    web_node2 ansible_host=web02.xyz.com ansible_connection=ssh ansible_user=administrator ansible_ssh_pass=Win$Pass
+    web_node3 ansible_host=web03.xyz.com ansible_connection=ssh ansible_user=administrator ansible_ssh_pass=Win$Pass
+
+    [db_nodes]
+    sql_db1
+    sql_db2
+
+    [web_nodes]
+    web_node1
+    web_node2
+    web_node3
+
+    [all_nodes:children]
+    db_nodes
+    web_nodes
+
+------------------------------------------------------------------------------------------------------------------
 
 
 # Appendix 
 
-  $ apm install linter-js-yaml
+    $ apm install linter-js-yaml
 
  
   
