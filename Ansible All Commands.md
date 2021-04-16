@@ -108,14 +108,46 @@ go to exercise-1-copy-file folder and execute
 
 make sure the test-file.txt dosent exist in target1 and 2 severs.
 
-  $ansible-playbook playbook-copyfile.yaml -i inventory.txt
+  $ ansible-playbook playbook-copyfile.yaml -i inventory.txt
+  $ ansible playbook playbook-pingtest.yaml -i inventory.txt
 
 
-## Appendix 
+## Module Coding Exercise
+
+  Ansible Modules
+
+1) Update the playbook with a play to Execute a script on all web server nodes. The script is located at /tmp/install_script.sh
+
+Use the Script module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/script_module.html
+
+2) Update the playbook to add a new task to start httpd services on all web nodes
+
+Use the Service module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_module.html
+
+
+3) Update the playbook to add a new task in the beginning to add an entry into /etc/resolv.conf file for hosts. The line to be added    is nameserver 10.1.250.10
+
+    **Note:** The new task must be executed first, so place it accordingly.
+
+Use the Lineinfile module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/lineinfile_module.html
+
+4) Update the playbook to add a new task at second position (right after adding entry to resolv.conf) to create a new web user.
+
+Use the user module for this. User details to be used are given below:
+Username: web_user
+uid: 1040
+group: developers
+
+user Module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html
+
+
+
+
+# Appendix 
 
   $ apm install linter-js-yaml
 
-  $ ansible playbook playbook-pingtest.yaml -i inventory.txt
+ 
   
 ###Install Visual Studio Code or autom IDE
 
