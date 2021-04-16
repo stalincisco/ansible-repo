@@ -142,6 +142,9 @@ make sure the test-file.txt dosent exist in target1 and 2 severs.
 
     user Module from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html
 
+## Create a Playbook1.yaml with above instructions. 
+
+
 ------------------------------------------------------------------------------------------------------------------------
 ## Sample Inventory File
 
