@@ -115,7 +115,7 @@ make sure the test-file.txt dosent exist in target1 and 2 severs.
 
 ## Module Coding Exercise
 
-## Ansible Modules
+### Ansible Modules
 
     1) Update the playbook with a play to Execute a script on all web server nodes. The script is located at /tmp/install_script.sh
 
@@ -169,6 +169,82 @@ make sure the test-file.txt dosent exist in target1 and 2 severs.
     web_nodes
 
 ------------------------------------------------------------------------------------------------------------------
+
+
+
+## Variables Coding Exercise
+
+### Ansible Variables
+
+
+    1) The playbook is used to update name server entry into resolv.conf file on localhost. The name server information is also 
+       updated in the inventory file as a variable nameserver_ip. Refer to the inventory file.
+
+    Replace the ip of the name server in this playbook to use the value from the inventory file, so that in the future if you had to   
+    make any changes you simply have to update the inventory file.
+
+
+  -
+        name: 'Update nameserver entry into resolv.conf file on localhost'
+        hosts: localhost
+
+        tasks:
+        -
+            name: 'Update nameserver entry into resolv.conf file'
+            lineinfile:
+                path: /etc/resolv.conf
+                line: 'nameserver 10.1.250.10'
+
+    2) We have added a new task to disable SNMP port in the playbook. However the port is hardcoded in the playbook. Update the 
+       inventory file to add a new variable snmp_port and assign the value used here. Then update the playbook to use value from the 
+       variable.
+
+
+        -
+            name: 'Update nameserver entry into resolv.conf file on localhost'
+            hosts: localhost
+            tasks:
+        -
+             name: 'Update nameserver entry into resolv.conf file'
+             lineinfile:
+                path: /etc/resolv.conf
+                line: 'nameserver {{ nameserver_ip }}'
+        -
+            name: 'Disable SNMP Port'
+            firewalld:
+                port: 160-161
+                permanent: true
+                state: disabled
+		
+**Remember to use curly braces around the variable name.**
+
+    3) We are printing some personal information to the screen. We would like to move the car_model, country_name and title to a  
+       variable defined at the play level.
+
+       Create three new variables (car_model, country_name and title) under the play and move the values over. Use the variables in 
+       the task. 
+
+      -
+        name: 'Update nameserver entry into resolv.conf file on localhost'
+        hosts: localhost
+        tasks:
+        -
+            name: 'Print my car model'
+            command: 'echo "My car''s model is BMW M3"'
+        -
+            name: 'Print my country'
+            command: 'echo "I live in the USA"'
+        -
+            name: 'Print my title'
+            command: 'echo "I work as a Systems Engineer"'
+
+
+### Sample Inventory File
+
+    localhost ansible_connection=localhost nameserver_ip=10.1.250.10
+
+
+
 
 
 # Appendix 
